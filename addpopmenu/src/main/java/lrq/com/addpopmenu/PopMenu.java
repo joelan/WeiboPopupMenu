@@ -72,10 +72,7 @@ public class PopMenu {
     private int mScreenWidth;
     private int mScreenHeight;
 
-    /**
-     * 背景颜色
-     */
-    private int mBackGroundColor=Color.parseColor("#f0f3f3f3");
+
 
     public int getmBackGroundColor() {
         return mBackGroundColor;
@@ -85,10 +82,7 @@ public class PopMenu {
         this.mBackGroundColor = mBackGroundColor;
     }
 
-    /**
-     * 关闭按钮的图片
-     */
-    private int mCloseButtomResourceid=R.drawable.tabbar_compose_background_icon_close;
+
 
     public int getmCloseButtomResourceid() {
         return mCloseButtomResourceid;
@@ -112,6 +106,34 @@ public class PopMenu {
      */
    private int mCloseMenuMarginbottom=15;
 
+    /**
+     * 背景颜色
+     */
+    private int mBackGroundColor=Color.parseColor("#f0f3f3f3");
+
+    /**
+     * 关闭按钮的图片
+     */
+    private int mCloseButtomResourceid=R.drawable.tabbar_compose_background_icon_close;
+
+    /**
+     * Menu相对于屏幕顶部的距离（去掉菜单本身高度剩下部分除以这个倍数因子）
+     */
+
+    private   float mMarginTopRemainSpace=1.5f;
+
+    /**
+     * 是否错位弹出菜单
+     */
+    private   boolean mIsmalpositionAnimatOut=true;
+
+    /**
+     * 错位动画时间（毫秒）默认50
+     */
+    private   int malposition=50;
+
+
+
     private boolean isShowing = false;
 
     public float getmMarginTopRemainSpace() {
@@ -134,22 +156,6 @@ public class PopMenu {
 
 
 
-
-    /**
-     * Menu相对于屏幕顶部的距离（去掉菜单本身高度剩下部分除以这个倍数因子）
-     */
-
-  private   float mMarginTopRemainSpace=1.5f;
-
-    /**
-     * 是否错位弹出菜单
-     */
-  private   boolean mIsmalpositionAnimatOut=true;
-
-    /**
-     * 错位动画时间（毫秒）默认50
-     */
-  private   int malposition=50;
 
 
 
