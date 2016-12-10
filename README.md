@@ -48,7 +48,7 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
     /**
      * 关闭按钮的图片
      */
-
+    private int mCloseButtomResourceid=R.drawable.tabbar_compose_background_icon_close;
 
     /**
      * Menu相对于屏幕顶部的距离（去掉菜单本身高度剩下部分除以这个倍数因子）
