@@ -1,0 +1,90 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+def siteUrl = 'https://github.com/joelan/CircleReveal'	//Homepage URL of the library
+def gitUrl = 'https://github.com/joelan/CircleReveal'	//Git repository url
+def issueUrl = 'https://github.com/joelan/CircleReveal/issues'	//issue url of the library
+
+def inception = '2016'
+def userid = 'joelan'
+def emailx="joe544351900@sina.cn"
+def username ="Joelanlrq"
+def versionx="1.0.0"
+
+group = "com.joe.animationtool"	//
+def groupx="com.joe.animationtool"
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'Circular Reveal for API  14 above'
+                url siteUrl
+
+                // Archive
+                groupId groupx
+                artifactId archivesBaseName
+                //version project.version
+                version versionx
+
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id userid //your user ID
+                        name username //your name
+                        email emailx//your email
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = userid
+    key = "key"
+    configurations = ['archives']
+    pkg {
+        repo = "maven"	//发布到Bintray的哪个仓库
+        name = "CircularReveal"	//发布到Bintray上的名字
+        desc = "this is circular Reveal "	//项目描述
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        issueTrackerUrl = issueUrl
+        licenses = ["Apache-2.0"]
+        labels = ['android',"Circular Reveal"]	//标签
+        publish = true
+        publicDownloadNumbers = true
+    }
+}
