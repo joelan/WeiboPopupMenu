@@ -32,6 +32,8 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
 ##3.自定义
 
 （1）###在PopMenu里以下属性的set方法都可以自定义相对应的自定义功能
+
+```java
    /**
 
      * 关闭按钮距离屏幕底部位置单位dp
@@ -63,3 +65,5 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
      * 错位动画时间（毫秒）默认50
      */
     private   int malposition=50;
+    
+    ```
