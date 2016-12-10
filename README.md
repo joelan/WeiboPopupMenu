@@ -1,7 +1,7 @@
 # 仿微博添加按钮弹出菜单
 ##1.依赖
 ###在需要使用的模块里面的gradle添加下面的依赖。
-```grovvy
+```java
 dependencies {
 compile 'com.lrq.menu:addpopmenu:1.0.2'
 }
