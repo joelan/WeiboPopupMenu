@@ -21,9 +21,12 @@ android {
     }
 }
 
-version = "1.0.0"
-group='com.joe.animationtool'
 
+version = "1.0.2"
+group='com.joe.animationtool'
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

@@ -1,18 +1,18 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-def siteUrl = 'https://github.com/joelan/CircleReveal'	//Homepage URL of the library
-def gitUrl = 'https://github.com/joelan/CircleReveal'	//Git repository url
-def issueUrl = 'https://github.com/joelan/CircleReveal/issues'	//issue url of the library
+def siteUrl = 'https://github.com/joelan/WeiboPopupMenu'	//Homepage URL of the library
+def gitUrl = 'https://github.com/joelan/WeiboPopupMenu'	//Git repository url
+def issueUrl = 'https://github.com/joelan/WeiboPopupMenu/issues'	//issue url of the library
 
 def inception = '2016'
 def userid = 'joelan'
 def emailx="joe544351900@sina.cn"
 def username ="Joelanlrq"
-def versionx="1.0.0"
+def versionx="1.0.2"
 
-group = "com.joe.animationtool"	//
-def groupx="com.joe.animationtool"
+group = "com.lrq.menu"	//
+def groupx="com.lrq.menu"
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -20,7 +20,7 @@ install {
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'Circular Reveal for API  14 above'
+                name 'WeiboPopupMenu'
                 url siteUrl
 
                 // Archive
@@ -43,12 +43,25 @@ install {
                         name username //your name
                         email emailx//your email
                     }
+
+
                 }
                 scm {
                     connection gitUrl
                     developerConnection gitUrl
                     url siteUrl
                 }
+
+
+            /*    dependencies {
+
+                    dependency{
+                        groupId "com.facebook.rebound"
+                        artifactId "rebound""version " "0.3.8"//同dependencies
+                    }
+                }
+*/
+
             }
         }
     }
@@ -57,9 +70,15 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
+/*task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}*/
+
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "UTF-8"
 }
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
@@ -77,13 +96,13 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"	//发布到Bintray的哪个仓库
-        name = "CircularReveal"	//发布到Bintray上的名字
-        desc = "this is circular Reveal "	//项目描述
+        name = "WeiboPopupMenu"	//发布到Bintray上的名字
+        desc = "resemble SinaWeiBo  PopMenu "	//项目描述
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         issueTrackerUrl = issueUrl
         licenses = ["Apache-2.0"]
-        labels = ['android',"Circular Reveal"]	//标签
+        labels = ['android',"SinaWeiBo PopMenu"]	//标签
         publish = true
         publicDownloadNumbers = true
     }

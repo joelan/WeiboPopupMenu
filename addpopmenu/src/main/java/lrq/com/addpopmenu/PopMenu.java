@@ -72,6 +72,46 @@ public class PopMenu {
     private int mScreenWidth;
     private int mScreenHeight;
 
+    /**
+     * 背景颜色
+     */
+    private int mBackGroundColor=Color.parseColor("#f0f3f3f3");
+
+    public int getmBackGroundColor() {
+        return mBackGroundColor;
+    }
+
+    public void setmBackGroundColor(int mBackGroundColor) {
+        this.mBackGroundColor = mBackGroundColor;
+    }
+
+    /**
+     * 关闭按钮的图片
+     */
+    private int mCloseButtomResourceid=R.drawable.tabbar_compose_background_icon_close;
+
+    public int getmCloseButtomResourceid() {
+        return mCloseButtomResourceid;
+    }
+
+    public void setmCloseButtomResourceid(int mCloseButtomResourceid) {
+        this.mCloseButtomResourceid = mCloseButtomResourceid;
+    }
+
+    public int getmCloseMenuMarginbottom() {
+        return mCloseMenuMarginbottom;
+    }
+
+    public void setmCloseMenuMarginbottom(int mCloseMenuMarginbottom) {
+        this.mCloseMenuMarginbottom = mCloseMenuMarginbottom;
+    }
+
+    /**
+
+     * 关闭按钮距离屏幕底部位置单位dp
+     */
+   private int mCloseMenuMarginbottom=15;
+
     private boolean isShowing = false;
 
     public float getmMarginTopRemainSpace() {
@@ -201,7 +241,7 @@ public class PopMenu {
 
         mGridLayout = new GridLayout(mActivity);
         mGridLayout.setColumnCount(mColumnCount);
-        mGridLayout.setBackgroundColor(Color.parseColor("#f0f3f3f3"));
+        mGridLayout.setBackgroundColor(mBackGroundColor);
         int hPadding = dp2px(mActivity, mHorizontalPadding);
         int vPadding = dp2px(mActivity, mVerticalPadding);
         int itemWidth = (mScreenWidth - (mColumnCount + 1) * hPadding) / mColumnCount;
@@ -251,7 +291,7 @@ public class PopMenu {
 
         mCloseIv = new ImageView(mActivity);
         mCloseIv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        mCloseIv.setImageResource(R.drawable.tabbar_compose_background_icon_close);
+        mCloseIv.setImageResource(mCloseButtomResourceid);
         mCloseIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,7 +302,7 @@ public class PopMenu {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        layoutParams.bottomMargin = dp2px(mActivity, 10);
+        layoutParams.bottomMargin = dp2px(mActivity, mCloseMenuMarginbottom);
         mAnimateLayout.addView(mCloseIv, layoutParams);
     }
 
