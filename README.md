@@ -1,4 +1,7 @@
-# 仿微博添加按钮弹出菜单
+# 仿微博添加按钮弹出菜单效果图
+![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-44-686_com.example.ad.png)
+![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-50-299_com.example.ad.png)
+
 ##1.依赖
 ###在需要使用的模块里面的gradle添加下面的依赖。
 ```java
