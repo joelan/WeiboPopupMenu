@@ -11,6 +11,7 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
 
 ```
 ##2.使用
+在对应要弹出的按钮事件上加上这段代码
 ```java
 
     mPopMenu = new PopMenu.Builder().attachToActivity(MainActivity.this)
