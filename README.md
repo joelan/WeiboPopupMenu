@@ -1,6 +1,4 @@
 # 仿微博添加按钮弹出菜单
-
-# 效果图
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-44-686_com.example.ad.png)
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-50-299_com.example.ad.png)
 
@@ -62,7 +60,7 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
     private int mCloseButtomResourceid=R.drawable.tabbar_compose_background_icon_close;
 
     /**
-     * Menu相对于屏幕顶部的距离（去掉菜单本身高度剩下部分除以这个倍数因子）
+     * Menu相对于屏幕顶部的距离的的倍数因子（屏幕高度减去菜单本身高度剩下部分除以这个倍数因子）
      */
 
     private   float mMarginTopRemainSpace=1.5f;
