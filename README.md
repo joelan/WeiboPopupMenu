@@ -75,7 +75,8 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
     private   int malposition=50;
     
     ```
-    ##（2）在PopMenu以下属性的set方法都可以自定义相对应的自定义功能（调用.build()前调用）
+###（2）在PopMenu以下属性的set方法都可以自定义相对应的自定义功能（调用.build()前调用）
+
     ```java
     /**
      * 一行多少列，默认三列
@@ -119,7 +120,7 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
             this.friction = friction;
             return this;
         }
-  /**
+    /**
      * item水平之间的间距
      */
         public Builder horizontalPadding(int padding) {
