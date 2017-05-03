@@ -2,8 +2,8 @@
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-44-686_com.example.ad.png)
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-50-299_com.example.ad.png)
 
-##1.依赖
-###依赖库分发在Jcenter。
+## 1.依赖
+### 依赖库分发在Jcenter。
 ```java
 
  repositories { 
@@ -15,7 +15,7 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
 }
 
 ```
-##2.使用
+## 2.使用
 在对应要弹出的按钮事件上加上这段代码
 ```java
 
@@ -38,9 +38,9 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
        mPopMenu.show();         
                 
 ```
-##3.自定义
+## 3.自定义
 
-###（1）在PopMenu以下属性的set方法都可以自定义相对应的自定义功能（调用.build()后调用,show（）调用之前）
+### （1）在PopMenu以下属性的set方法都可以自定义相对应的自定义功能（调用.build()后调用,show（）调用之前）
 
 ```java
    /**
@@ -76,7 +76,7 @@ compile 'com.lrq.menu:addpopmenu:1.0.2'
     
 ```
 
-###(2)在PopMenu以下属性的set方法都可以自定义相对应的自定义功能（调用.build()前调用）
+### (2)在PopMenu以下属性的set方法都可以自定义相对应的自定义功能（调用.build()前调用）
 
 ```java
     /**
