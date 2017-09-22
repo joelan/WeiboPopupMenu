@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Handler;
 import android.util.TypedValue;
@@ -18,6 +19,7 @@ import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -204,6 +206,11 @@ public class PopMenu {
         ViewGroup decorView = (ViewGroup) mActivity.getWindow().getDecorView();
         decorView.addView(mAnimateLayout);
 
+       // decorView.setPadding(0,0,0,getNavigationBarHeight(mActivity));
+        ViewGroup.MarginLayoutParams lp= (ViewGroup.MarginLayoutParams) mAnimateLayout.getLayoutParams();
+        lp.setMargins(0,0,0,getNavigationBarHeight(mActivity));
+        mAnimateLayout.setLayoutParams(lp);
+
         //执行显示动画
         showSubMenus(mGridLayout);
 
@@ -236,6 +243,7 @@ public class PopMenu {
      */
     private void buildAnimateGridLayout() {
         mAnimateLayout = new RelativeLayout(mActivity);
+
 
 
         mAnimateLayout.setOnClickListener(new View.OnClickListener() {
@@ -457,6 +465,42 @@ public class PopMenu {
             return popMenu;
         }
     }
+
+    //获取是否存在NavigationBar
+    public  boolean checkDeviceHasNavigationBar(Context context) {
+        boolean hasNavigationBar = false;
+        Resources rs = context.getResources();
+        int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
+        if (id > 0) {
+            hasNavigationBar = rs.getBoolean(id);
+        }
+        try {
+            Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
+            Method m = systemPropertiesClass.getMethod("get", String.class);
+            String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
+            if ("1".equals(navBarOverride)) {
+                hasNavigationBar = false;
+            } else if ("0".equals(navBarOverride)) {
+                hasNavigationBar = true;
+            }
+        } catch (Exception e) {
+
+        }
+        return hasNavigationBar;
+
+    }
+
+    private  int getNavigationBarHeight(Context context) {
+        int navigationBarHeight = 0;
+        Resources rs = context.getResources();
+        int id = rs.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (id > 0 && checkDeviceHasNavigationBar(context)) {
+            navigationBarHeight = rs.getDimensionPixelSize(id);
+        }
+        return navigationBarHeight;
+    }
+
+
 
     /**
      * dp 2 px

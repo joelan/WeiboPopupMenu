@@ -9,7 +9,7 @@ def inception = '2016'
 def userid = 'joelan'
 def emailx="joe544351900@sina.cn"
 def username ="Joelanlrq"
-def versionx="1.0.2"
+def versionx="1.0.3"
 
 group = "com.lrq.menu"	//
 def groupx="com.lrq.menu"
@@ -91,8 +91,9 @@ artifacts {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
+
     user = userid
-    key = "key"
+    key = ""
     configurations = ['archives']
     pkg {
         repo = "maven"	//发布到Bintray的哪个仓库
