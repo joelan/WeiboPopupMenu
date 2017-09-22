@@ -6,10 +6,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -467,7 +471,7 @@ public class PopMenu {
     }
 
     //获取是否存在NavigationBar
-    public  boolean checkDeviceHasNavigationBar(Context context) {
+  /*  public  boolean checkDeviceHasNavigationBar(Context context) {
         boolean hasNavigationBar = false;
         Resources rs = context.getResources();
         int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
@@ -488,6 +492,36 @@ public class PopMenu {
         }
         return hasNavigationBar;
 
+    }*/
+
+    public boolean checkDeviceHasNavigationBar(Context context) {
+        WindowManager windowManager=((Activity)context).getWindowManager();
+
+        DisplayMetrics dm = new DisplayMetrics();
+        Display display = windowManager.getDefaultDisplay();
+        display.getMetrics(dm);
+
+        int screenHeight = dm.heightPixels;
+        DisplayMetrics realDisplayMetrics = new DisplayMetrics();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            display.getRealMetrics(realDisplayMetrics);
+        } else {
+            Class c;
+            try {
+                c = Class.forName("android.view.Display");
+                Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+                method.invoke(display, realDisplayMetrics);
+            } catch (Exception e) {
+                realDisplayMetrics.setToDefaults();
+                e.printStackTrace();
+            }
+        }
+
+        int screenRealHeight = realDisplayMetrics.heightPixels;
+
+
+        return (screenRealHeight - screenHeight) > 0;//screenRealHeight上面方法中有计算
     }
 
     private  int getNavigationBarHeight(Context context) {
