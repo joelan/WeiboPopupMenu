@@ -2,6 +2,9 @@
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-44-686_com.example.ad.png)
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-50-299_com.example.ad.png)
 
+## 版本更新须知（1.0.3）
+1.0.3修复了虚拟按键Navigationbar和关闭按钮重叠的问题。
+
 ## 1.依赖
 ### 依赖库分发在Jcenter。
 ```java
@@ -11,7 +14,7 @@
    }
 
 dependencies {
-compile 'com.lrq.menu:addpopmenu:1.0.2'
+compile 'com.lrq.menu:addpopmenu:1.0.3'
 }
 
 ```
