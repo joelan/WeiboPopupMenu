@@ -22,7 +22,7 @@ android {
 }
 
 
-version = "1.0.4"
+version = "1.0.5"
 group='com.joe.animationtool'
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"

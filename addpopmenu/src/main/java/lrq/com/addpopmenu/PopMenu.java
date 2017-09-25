@@ -62,6 +62,37 @@ public class PopMenu {
      */
     private static final int DEFAULT_VERTICAL_PADDING = 15;
 
+
+    /**
+     * 文字大小
+     */
+    private int textsize = -1;
+
+    /**
+     * 文字颜色 资源R.Color.颜色值
+     */
+    private int textcolor = -1;
+
+    public static int getDefaultColumnCount() {
+        return DEFAULT_COLUMN_COUNT;
+    }
+
+    public int getTextsize() {
+        return textsize;
+    }
+
+    public void setTextsize(int textsize) {
+        this.textsize = textsize;
+    }
+
+    public int getTextcolor() {
+        return textcolor;
+    }
+
+    public void setTextcolor(int textcolor) {
+        this.textcolor = textcolor;
+    }
+
     private Activity mActivity;
     private int mColumnCount;
     private List<PopMenuItem> mMenuItems = new ArrayList<>();
@@ -74,10 +105,40 @@ public class PopMenu {
     private int mHorizontalPadding;
     private int mVerticalPadding;
     private PopMenuItemListener mPopMenuItemListener;
+    private boolean isclosevisible = true;
+
+    public boolean isclosevisible() {
+        return isclosevisible;
+    }
+
+    public void setIsclosevisible(boolean isclosevisible) {
+        this.isclosevisible = isclosevisible;
+    }
 
     private int mScreenWidth;
     private int mScreenHeight;
 
+
+    /**
+     * 返回相应的menuitem
+     * @param i
+     * @return
+     */
+    public PopSubView getMenuItem(int i) {
+        PopSubView subView = null;
+        try {
+            subView = (PopSubView) mGridLayout.getChildAt(i);
+        } catch (Throwable e) {
+
+
+        }
+
+        if (subView != null)
+            return subView;
+        else
+            return null;
+
+    }
 
 
     public int getmBackGroundColor() {
@@ -88,6 +149,13 @@ public class PopMenu {
         this.mBackGroundColor = mBackGroundColor;
     }
 
+    /**
+     * 透明背景
+     */
+    public void setmBackGroundTrasnparent() {
+
+        this.mBackGroundColor = Color.parseColor("#00ffffff");
+    }
 
 
     public int getmCloseButtomResourceid() {
@@ -98,46 +166,44 @@ public class PopMenu {
         this.mCloseButtomResourceid = mCloseButtomResourceid;
     }
 
-    public int getmCloseMenuMarginbottom() {
+    public int getCloseMenuMarginbottom() {
         return mCloseMenuMarginbottom;
     }
 
-    public void setmCloseMenuMarginbottom(int mCloseMenuMarginbottom) {
+    public void setCloseMenuMarginbottom(int mCloseMenuMarginbottom) {
         this.mCloseMenuMarginbottom = mCloseMenuMarginbottom;
     }
 
     /**
-
      * 关闭按钮距离屏幕底部位置单位dp
      */
-   private int mCloseMenuMarginbottom=15;
+    private int mCloseMenuMarginbottom = 15;
 
     /**
      * 背景颜色
      */
-    private int mBackGroundColor=Color.parseColor("#f0f3f3f3");
+    private int mBackGroundColor = Color.parseColor("#f0f3f3f3");
 
     /**
      * 关闭按钮的图片
      */
-    private int mCloseButtomResourceid=R.drawable.tabbar_compose_background_icon_close;
+    private int mCloseButtomResourceid = R.drawable.tabbar_compose_background_icon_close;
 
     /**
      * Menu相对于屏幕顶部的距离（去掉菜单本身高度剩下部分除以这个倍数因子）
      */
 
-    private   float mMarginTopRemainSpace=1.5f;
+    private float mMarginTopRemainSpace = 1.5f;
 
     /**
      * 是否错位弹出菜单
      */
-    private   boolean mIsmalpositionAnimatOut=true;
+    private boolean mIsmalpositionAnimatOut = true;
 
     /**
      * 错位动画时间（毫秒）默认50
      */
-    private   int malposition=50;
-
+    private int malposition = 50;
 
 
     private boolean isShowing = false;
@@ -157,12 +223,6 @@ public class PopMenu {
     public void setmIsmalpositionAnimatOut(boolean mIsmalpositionAnimatOut) {
         this.mIsmalpositionAnimatOut = mIsmalpositionAnimatOut;
     }
-
-
-
-
-
-
 
 
     public int getMalposition() {
@@ -210,9 +270,9 @@ public class PopMenu {
         ViewGroup decorView = (ViewGroup) mActivity.getWindow().getDecorView();
         decorView.addView(mAnimateLayout);
 
-       // decorView.setPadding(0,0,0,getNavigationBarHeight(mActivity));
-        ViewGroup.MarginLayoutParams lp= (ViewGroup.MarginLayoutParams) mAnimateLayout.getLayoutParams();
-        lp.setMargins(0,0,0,getNavigationBarHeight(mActivity));
+        // decorView.setPadding(0,0,0,getNavigationBarHeight(mActivity));
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) mAnimateLayout.getLayoutParams();
+        lp.setMargins(0, 0, 0, getNavigationBarHeight(mActivity));
         mAnimateLayout.setLayoutParams(lp);
 
         //执行显示动画
@@ -249,7 +309,6 @@ public class PopMenu {
         mAnimateLayout = new RelativeLayout(mActivity);
 
 
-
         mAnimateLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -272,6 +331,14 @@ public class PopMenu {
         for (int i = 0; i < mMenuItems.size(); i++) {
             final int position = i;
             PopSubView subView = new PopSubView(mActivity);
+            if (textcolor != -1) {
+                subView.getTextView().setTextColor(mActivity.getResources().getColor(textcolor));
+
+            }
+            if (textsize != -1) {
+                subView.getTextView().setTextSize(textsize);
+
+            }
             PopMenuItem menuItem = mMenuItems.get(i);
             subView.setPopMenuItem(menuItem);
             subView.setOnClickListener(new View.OnClickListener() {
@@ -302,9 +369,7 @@ public class PopMenu {
         layoutParams2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         layoutParams2.addRule(RelativeLayout.CENTER_HORIZONTAL);
 
-        mAnimateLayout.addView(mGridLayout,layoutParams2);
-
-
+        mAnimateLayout.addView(mGridLayout, layoutParams2);
 
 
         mCloseIv = new ImageView(mActivity);
@@ -316,6 +381,12 @@ public class PopMenu {
                 hide();
             }
         });
+        if (isclosevisible) {
+            mCloseIv.setVisibility(View.VISIBLE);
+        } else {
+            mCloseIv.setVisibility(View.GONE);
+        }
+
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -335,7 +406,7 @@ public class PopMenu {
 
         for (int i = 0; i < childCount; i++) {
             final View view = viewGroup.getChildAt(i);
-              view.setVisibility(View.INVISIBLE);
+            view.setVisibility(View.INVISIBLE);
 
             animationAction(i, view);
 
@@ -344,12 +415,13 @@ public class PopMenu {
 
     /**
      * 动画动作
+     *
      * @param i
      * @param view
      */
     private void animationAction(int i, final View view) {
 
-        if(mIsmalpositionAnimatOut) {
+        if (mIsmalpositionAnimatOut) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -360,9 +432,7 @@ public class PopMenu {
 
                 }
             }, i * malposition);
-        }
-        else
-        {
+        } else {
 
             view.setVisibility(View.VISIBLE);
             animateViewDirection(view, mScreenHeight, 0, mTension, mFriction);
@@ -495,7 +565,7 @@ public class PopMenu {
     }*/
 
     public boolean checkDeviceHasNavigationBar(Context context) {
-        WindowManager windowManager=((Activity)context).getWindowManager();
+        WindowManager windowManager = ((Activity) context).getWindowManager();
 
         DisplayMetrics dm = new DisplayMetrics();
         Display display = windowManager.getDefaultDisplay();
@@ -524,7 +594,7 @@ public class PopMenu {
         return (screenRealHeight - screenHeight) > 0;//screenRealHeight上面方法中有计算
     }
 
-    private  int getNavigationBarHeight(Context context) {
+    private int getNavigationBarHeight(Context context) {
         int navigationBarHeight = 0;
         Resources rs = context.getResources();
         int id = rs.getIdentifier("navigation_bar_height", "dimen", "android");
@@ -533,7 +603,6 @@ public class PopMenu {
         }
         return navigationBarHeight;
     }
-
 
 
     /**

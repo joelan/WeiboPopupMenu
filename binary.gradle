@@ -9,7 +9,7 @@ def inception = '2016'
 def userid = 'joelan'
 def emailx="joe544351900@sina.cn"
 def username ="Joelanlrq"
-def versionx="1.0.4"
+def versionx="1.0.5"
 
 group = "com.lrq.menu"	//
 def groupx="com.lrq.menu"

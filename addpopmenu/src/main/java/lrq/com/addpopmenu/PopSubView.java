@@ -19,6 +19,24 @@ public class PopSubView extends LinearLayout {
     private static final float factor = 1.2f;
 
     private ImageView icon;
+
+    public ImageView getIcon() {
+        return icon;
+    }
+
+    public void setIcon(ImageView icon) {
+        this.icon = icon;
+    }
+
+    public TextView getTextView() {
+        return textView;
+
+    }
+
+    public void setTextView(TextView textView) {
+        this.textView = textView;
+    }
+
     private TextView textView;
 
     public PopSubView(Context context) {
