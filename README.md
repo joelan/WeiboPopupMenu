@@ -9,11 +9,7 @@
 
 ## 1.依赖
 ### 依赖库分发在Jcenter。
-```java
-
- repositories { 
-        jcenter()
-   }
+```groovy
 
 dependencies {
 compile 'com.lrq.menu:addpopmenu:latestVersion'
