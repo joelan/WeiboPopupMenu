@@ -1,4 +1,6 @@
 # 仿微博添加按钮弹出菜单
+[ ![Download](https://api.bintray.com/packages/joelan/maven/WeiboPopupMenu/images/download.svg) ](https://bintray.com/joelan/maven/WeiboPopupMenu/_latestVersion)
+
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-44-686_com.example.ad.png)
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-50-299_com.example.ad.png)
 
