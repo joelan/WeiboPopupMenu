@@ -16,7 +16,7 @@
    }
 
 dependencies {
-compile 'com.lrq.menu:addpopmenu:1.0.5'
+compile 'com.lrq.menu:addpopmenu:latestVersion'
 }
 
 ```
