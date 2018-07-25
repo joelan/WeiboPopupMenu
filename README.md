@@ -1,20 +1,18 @@
 # 仿微博添加按钮弹出菜单
+[ ![Download](https://api.bintray.com/packages/joelan/maven/WeiboPopupMenu/images/download.svg) ](https://bintray.com/joelan/maven/WeiboPopupMenu/_latestVersion)
+
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-44-686_com.example.ad.png)
 ![image](https://github.com/joelan/WeiboPopupMenu/raw/master/screenshoot/Screenshot_2016-12-10-20-00-50-299_com.example.ad.png)
 
-## 版本更新须知（1.0.4）
-1.0.4修复了虚拟按键Navigationbar和关闭按钮重叠的问题。
+## 版本更新须知（1.0.5）
+增加MenuItem的获取，预设的的个别几项属性设置settter和getter
 
 ## 1.依赖
 ### 依赖库分发在Jcenter。
-```java
-
- repositories { 
-        jcenter()
-   }
+```groovy
 
 dependencies {
-compile 'com.lrq.menu:addpopmenu:1.0.4'
+compile 'com.lrq.menu:addpopmenu:latestVersion'
 }
 
 ```
