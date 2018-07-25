@@ -93,6 +93,12 @@ public class PopMenu {
         this.textcolor = textcolor;
     }
 
+    OnMenuCloseListener onMenuCloseListener;
+
+    public void setOnMenuCloseListener(OnMenuCloseListener onMenuCloseListener) {
+        this.onMenuCloseListener = onMenuCloseListener;
+    }
+
     private Activity mActivity;
     private int mColumnCount;
     private List<PopMenuItem> mMenuItems = new ArrayList<>();
@@ -292,6 +298,10 @@ public class PopMenu {
                 public void onAnimationEnd(Animator animation) {
                     ViewGroup decorView = (ViewGroup) mActivity.getWindow().getDecorView();
                     decorView.removeView(mAnimateLayout);
+                    if(onMenuCloseListener!=null)
+                    {
+                        onMenuCloseListener.onClose(mGridLayout);
+                    }
                 }
             });
             isShowing = false;
@@ -615,5 +625,11 @@ public class PopMenu {
     protected int dp2px(Context context, int dpVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 dpVal, context.getResources().getDisplayMetrics());
+    }
+
+
+    public  interface OnMenuCloseListener
+    {
+        void onClose(View v);
     }
 }

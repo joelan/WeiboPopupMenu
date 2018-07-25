@@ -5,11 +5,11 @@ def siteUrl = 'https://github.com/joelan/WeiboPopupMenu'	//Homepage URL of the l
 def gitUrl = 'https://github.com/joelan/WeiboPopupMenu'	//Git repository url
 def issueUrl = 'https://github.com/joelan/WeiboPopupMenu/issues'	//issue url of the library
 
-def inception = '2016'
+def inception = '2018'
 def userid = 'joelan'
 def emailx="joe544351900@sina.cn"
 def username ="Joelanlrq"
-def versionx="1.0.5"
+def versionx="1.0.7"
 
 group = "com.lrq.menu"	//
 def groupx="com.lrq.menu"
